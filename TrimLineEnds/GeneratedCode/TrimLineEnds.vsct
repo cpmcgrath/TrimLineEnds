@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CommandTable xmlns="http://schemas.microsoft.com/VisualStudio/2005-10-18/CommandTable" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <!--  This is the file that defines the actual layout and type of the commands.
+        It is divided in different sections (e.g. command definition, command
+        placement, ...), with each defining a specific set of properties.
+        See the comment before each section for more details about how to
+        use it. -->
+
+  <!--  The VSCT compiler (the tool that translates this file into the binary 
+        format that VisualStudio will consume) has the ability to run a preprocessor 
+        on the vsct file; this preprocessor is (usually) the C++ preprocessor, so 
+        it is possible to define includes and macros with the same syntax used 
+        in C++ files. Using this ability of the compiler here, we include some files 
+        defining some of the constants that we will use inside the file. -->
+
+  <!--This is the file that defines the IDs for all the commands exposed by VisualStudio. -->
+  <Extern href="stdidcmd.h"/>
+
+  <!--This header contains the command ids for the menus provided by the shell. -->
+  <Extern href="vsshlids.h"/>
+
+  <!--Definition of some VSCT specific constants. In this sample we use it for the IDs inside the guidOfficeIcon group. -->
+  <Extern href="msobtnid.h"/>
+
+  <Extern href="VSDbgCmd.h" />
+  <Extern href="VsDebugGuids.h"/>
+
+  
+  <!--The Commands section is where we the commands, menus and menu groups are defined.
+      This section uses a Guid to identify the package that provides the command defined inside it. -->
+  <Commands package="guidPackage">
+  
+
+  <Buttons>
+    <Button guid="guidTrimLineEndsCommandSet" id="TrimLineEnds" priority="0x0100">
+                <Strings>
+            <CommandName>cmdidTrimLineEnds</CommandName>
+            <ButtonText>Trim line ends</ButtonText>
+            <MenuText>Trim line ends</MenuText>
+            <ToolTipText>Trim line ends</ToolTipText>
+            </Strings>
+      </Button>
+    </Buttons>
+
+
+
+  </Commands>
+
+  <CommandPlacements>
+     <CommandPlacement guid="guidTrimLineEndsCommandSet" id="TrimLineEnds" priority="0x0100"> 
+             <Parent guid="guidSHLMainMenu" id="IDG_VS_EDIT_COMMANDWELL" />
+           </CommandPlacement> 
+        </CommandPlacements>
+  
+  <VisibilityConstraints>
+        <VisibilityItem guid="guidTrimLineEndsCommandSet" id="TrimLineEnds" context="GUID_TextEditorFactory" />
+            </VisibilityConstraints>
+
+  <Symbols>
+    <!-- This is the package guid. -->
+    <GuidSymbol name="guidPackage" value="{a1688f1c-21b0-42cb-a381-a799a95ebd65}" />
+    
+    <!-- This is the guid used to group the menu commands together -->
+    <GuidSymbol name="guidTrimLineEndsCommandSet" value="{370b7457-7f7a-42ab-8795-8e2faa714cc6}">
+         <IDSymbol name="TrimLineEnds" value="0x0003" />
+      </GuidSymbol>
+    </Symbols>
+
+</CommandTable>
+
