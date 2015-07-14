@@ -3,7 +3,7 @@
     <Identifier Id="TrimLineEnds.CMcG.370b7457-7f7a-42ab-8795-8e2faa714cc6">
         <Name>Trim Line Ends</Name>
         <Author>Chris McGrath</Author>
-        <Version>3.0</Version>
+        <Version>4.0</Version>
         <Description xml:space="preserve">Performs .TrimEnd on every line in the file.</Description>
         <Locale>1033</Locale>
         <License>license.txt</License>
@@ -18,11 +18,16 @@
                 <Edition>Premium</Edition>
                 <Edition>Pro</Edition>
             </VisualStudio>
-        <VisualStudio Version="12.0">
-          <Edition>Ultimate</Edition>
-          <Edition>Premium</Edition>
-          <Edition>Pro</Edition>
-        </VisualStudio>
+            <VisualStudio Version="12.0">
+              <Edition>Ultimate</Edition>
+              <Edition>Premium</Edition>
+              <Edition>Pro</Edition>
+            </VisualStudio>
+            <VisualStudio Version="14.0">
+                <Edition>Ultimate</Edition>
+                <Edition>Premium</Edition>
+                <Edition>Pro</Edition>
+            </VisualStudio>
         </SupportedProducts>
         <SupportedFrameworkRuntimeEdition MinVersion="4.0" MaxVersion="4.0" />
     </Identifier>
