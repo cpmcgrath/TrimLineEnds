@@ -11,11 +11,11 @@ using Microsoft.VisualStudio.Shell;
 
 namespace TrimLineEnds
 {
-    [PackageRegistration(UseManagedResourcesOnly = true)]
+    [PackageRegistration(UseManagedResourcesOnly = true, AllowsBackgroundLoading = true)]
     [InstalledProductRegistration("#110", "#112", "1.0", IconResourceID = 400)]
     [ProvideMenuResource("Menus.ctmenu", 1)]
     [Guid(GuidList.guidTrimLineEndsPkgString)]
-    public abstract class TrimLineEndsPackageBase : Package
+    public abstract class TrimLineEndsPackageBase : AsyncPackage
     {
 
 

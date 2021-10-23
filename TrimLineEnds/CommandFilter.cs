@@ -13,6 +13,7 @@ namespace CMcG.TrimLineEnds
 
         public int Exec(ref Guid pguidCmdGroup, uint nCmdID, uint nCmdexecopt, IntPtr pvaIn, IntPtr pvaOut)
         {
+            Microsoft.VisualStudio.Shell.ThreadHelper.ThrowIfNotOnUIThread();
             if (pguidCmdGroup != CommandGuid)
                 return Next.Exec(ref pguidCmdGroup, nCmdID, nCmdexecopt, pvaIn, pvaOut);
 
@@ -22,6 +23,7 @@ namespace CMcG.TrimLineEnds
 
         public int QueryStatus(ref Guid pguidCmdGroup, uint cCmds, OLECMD[] prgCmds, IntPtr pCmdText)
         {
+            Microsoft.VisualStudio.Shell.ThreadHelper.ThrowIfNotOnUIThread();
             if (pguidCmdGroup != CommandGuid)
                 return Next.QueryStatus(ref pguidCmdGroup, cCmds, prgCmds, pCmdText);
 
@@ -32,17 +34,12 @@ namespace CMcG.TrimLineEnds
             return VSConstants.S_OK;
         }
 
-        public virtual bool CanExecute(uint cCmds)
-        {
-            return true;
-        }
-
+        public virtual bool CanExecute(uint cCmds) => true;
         public abstract void Execute(uint nCmdID);
 
         public static void Register(IVsTextView textViewAdapter, CommandFilter filter)
         {
-            IOleCommandTarget next;
-            if (ErrorHandler.Succeeded(textViewAdapter.AddCommandFilter(filter, out next)))
+            if (ErrorHandler.Succeeded(textViewAdapter.AddCommandFilter(filter, out var next)))
                 filter.Next = next;
         }
     }
